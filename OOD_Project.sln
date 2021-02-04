@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30523.141
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOD_Project", "OOD_Project\OOD_Project.csproj", "{EEE3599D-75B2-49C3-A5EF-3955AC263881}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEE3599D-75B2-49C3-A5EF-3955AC263881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE3599D-75B2-49C3-A5EF-3955AC263881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE3599D-75B2-49C3-A5EF-3955AC263881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE3599D-75B2-49C3-A5EF-3955AC263881}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29653C7C-354E-4669-BE20-85C25E75ADC9}
+	EndGlobalSection
+EndGlobal
