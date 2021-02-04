@@ -5,8 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOD_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="508.966" Width="654.138" Loaded="Window_Loaded">
     <Grid>
-        
+        <TextBox x:Name="tbxName" HorizontalAlignment="Left" Height="23" Margin="101,60,0,0" TextWrapping="Wrap" Text="Enter Name" VerticalAlignment="Top" Width="120" GotFocus="tbxName_GotFocus"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,61,0,0" TextWrapping="Wrap" Text="Name :" VerticalAlignment="Top"/>
+        <ListBox x:Name="lbxCharacterChoice" HorizontalAlignment="Left" Height="100" Margin="63,110,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="lbxCharacterChoice_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="24,110,0,0" TextWrapping="Wrap" Text="Class :" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tblkCharacterInfoBackground" HorizontalAlignment="Left" Height="135" Margin="374,113,0,0" TextWrapping="Wrap" Text="Character Background" VerticalAlignment="Top" Width="221"/>
+        <Button x:Name="btnNextPage" Content="Next" HorizontalAlignment="Left" Margin="520,436,0,0" VerticalAlignment="Top" Width="75" Click="btnNextPage_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="25,229,0,0" TextWrapping="Wrap" Text="Skills :" VerticalAlignment="Top" RenderTransformOrigin="-0.601,0.556"/>
+        <TextBlock HorizontalAlignment="Left" Margin="374,92,0,0" TextWrapping="Wrap" Text="Background" VerticalAlignment="Top"/>
+        <ListBox x:Name="lbxSkillList" HorizontalAlignment="Left" Height="149" Margin="24,266,0,0" VerticalAlignment="Top" Width="321" SelectionChanged="lbxSkillList_SelectionChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="374,247,0,0" TextWrapping="Wrap" Text="Skill Description :" VerticalAlignment="Top" RenderTransformOrigin="0.81,0.407"/>
+        <TextBlock x:Name="tblkSkillDescription" HorizontalAlignment="Left" Margin="374,268,0,0" TextWrapping="Wrap" Text="Skill Description" VerticalAlignment="Top" Height="147" Width="213"/>
+
     </Grid>
 </Window>
