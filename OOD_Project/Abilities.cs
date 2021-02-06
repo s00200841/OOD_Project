@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 
 namespace OOD_Project
 {
+    // Abilities come from the base class Abilities
+    // To add a new Ability a new class can be made below and will work off the base
     public abstract class Abilities
     {
-        public string AbilityName { get; set; }
+        // TODO: sort encapsulation if its needed
+        protected string AbilityName { get; set; }
         public string Details { get; set; }
-        
+        public int AbilityCost { get; set; }
 
         public Abilities(string abilityName)
         {
@@ -28,13 +31,14 @@ namespace OOD_Project
         }
     }
 
-    // Mage skills
+    // Mage skills ****
     public class FireBall : Abilities
     {
         public FireBall(string abilityname = "FireBall")
         {
             AbilityName = abilityname;
-            Details = $"{AbilityName}: Shoots a ball of fire at foes";
+            AbilityCost = 5;
+            Details = $"{AbilityName}: Shoots a ball of fire at foes.\nMana Cost: {AbilityCost}";
         }   
     }
 
@@ -43,7 +47,8 @@ namespace OOD_Project
         public IceFall( string abilityname = "IceFall")
         {
             AbilityName = abilityname;
-            Details = $"{AbilityName}: Ice falls opon foes, chilling all how get hit.";
+            AbilityCost = 7;
+            Details = $"{AbilityName}: Ice falls opon foes, chilling all how get hit.\nMana Cost: {AbilityCost}";
         }
     }
     public class Thunder : Abilities
@@ -51,18 +56,19 @@ namespace OOD_Project
         public Thunder(string abilityname = "Thunder")
         {
             AbilityName = abilityname;
-            Details = $"{AbilityName}: Thunder strikes the ground with massive force. Stunning and damaging all foes in its range.";
+            AbilityCost = 5;
+            Details = $"{AbilityName}: Thunder strikes the ground with massive force. Stunning and damaging all foes in its range.\nMana Cost: {AbilityCost}";
         }
     }
 
-
-    // Warrior Skills
+    // Warrior Skills ****
     public class SlamAttack : Abilities
     {
        public SlamAttack(string abilityname = "Slam Attack")
         {
             AbilityName = abilityname;
-            Details = $"{AbilityName}: Jump and slam the ground at opponents location.";
+            AbilityCost = 6;
+            Details = $"{AbilityName}: Jump and slam the ground at opponents location.\nMana Cost: {AbilityCost}";
         }
     }
     public class Swipe : Abilities
@@ -70,18 +76,19 @@ namespace OOD_Project
         public Swipe(string abilityname = "Swipe")
         {
             AbilityName = abilityname;
-            Details = $"{AbilityName}: Swing weapon with huge force in an arc infront of you hitting all targets in its range.";
+            AbilityCost = 3;
+            Details = $"{AbilityName}: Swing weapon with huge force in an arc infront of you hitting all targets in its range.\nMana Cost: {AbilityCost}";
         }
     }
 
-
-    // Assasin skills
+    // Assasin skills ****
     public class SneakAttack : Abilities
     {
        public SneakAttack(string abilityname = "Sneak Attack")
         {
             AbilityName = abilityname;
-            Details = $"{AbilityName}: Stab opponent in back";
+            AbilityCost = 10;
+            Details = $"{AbilityName}: Stab opponent in back.\nMana Cost: {AbilityCost}";
         }
     }
     public class Invisible : Abilities
@@ -89,7 +96,8 @@ namespace OOD_Project
         public Invisible(string abilityname = "Invisible")
         {
             AbilityName = abilityname;
-            Details = $"{AbilityName}: Turns character invisible increasing movement speed and damage while in stealth.";
+            AbilityCost = 7;
+            Details = $"{AbilityName}: Turns character invisible increasing movement speed and damage while in stealth.\nMana Cost: {AbilityCost}";
         }
     }
 }
