@@ -14,6 +14,9 @@ namespace OOD_Project
         protected string AbilityName { get; set; }
         public string Details { get; set; }
         public int AbilityCost { get; set; }
+        public int AbilityDamage { get; set; }
+        public float AbilityDuration { get; set; }
+        public int Inteligence { get; set; }
 
         public Abilities(string abilityName)
         {
@@ -29,17 +32,25 @@ namespace OOD_Project
         {
             return AbilityName;
         }
+
+        // Can either expand on different stats ex. int , str for more flexability since
+        // currrently this code takes the ability damage multiplied by stat divided by 3 
+        public int AbilityDamageScale(int damageScale)
+        {
+            return AbilityDamage = Convert.ToInt32(AbilityDamage* damageScale / 3);
+        }
     }
 
     // Mage skills ****
     public class FireBall : Abilities
     {
         public FireBall(string abilityname = "FireBall")
-        {
+        {           
             AbilityName = abilityname;
             AbilityCost = 5;
-            Details = $"{AbilityName}: Shoots a ball of fire at foes.\nMana Cost: {AbilityCost}";
-        }   
+            AbilityDamage = 25;
+            Details = $"{AbilityName}: Shoots a ball of fire at foes. Can inflict burning damage.";            
+        }
     }
 
     public class IceFall : Abilities
@@ -48,7 +59,9 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 7;
-            Details = $"{AbilityName}: Ice falls opon foes, chilling all how get hit.\nMana Cost: {AbilityCost}";
+            AbilityDamage = 15;
+            AbilityDuration = 3.5f;
+            Details = $"{AbilityName}: Ice falls opon foes, Damaging and chilling all who get hit for a duration.";
         }
     }
     public class Thunder : Abilities
@@ -57,7 +70,9 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 5;
-            Details = $"{AbilityName}: Thunder strikes the ground with massive force. Stunning and damaging all foes in its range.\nMana Cost: {AbilityCost}";
+            AbilityDamage = 36;
+            //AbilityDuration = 0;
+            Details = $"{AbilityName}: Thunder strikes the ground with massive force. Stunning and damaging all foes in its range.";
         }
     }
 
@@ -68,7 +83,9 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 6;
-            Details = $"{AbilityName}: Jump and slam the ground at opponents location.\nMana Cost: {AbilityCost}";
+            AbilityDamage = 35;
+            //AbilityDuration = 0;
+            Details = $"{AbilityName}: Jump and slam the ground at opponents location.";
         }
     }
     public class Swipe : Abilities
@@ -77,7 +94,9 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 3;
-            Details = $"{AbilityName}: Swing weapon with huge force in an arc infront of you hitting all targets in its range.\nMana Cost: {AbilityCost}";
+            AbilityDamage = 40;
+           // AbilityDuration = 0;
+            Details = $"{AbilityName}: Swing weapon with huge force in an arc infront of you hitting all targets in its range.";
         }
     }
 
@@ -88,7 +107,9 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 10;
-            Details = $"{AbilityName}: Stab opponent in back.\nMana Cost: {AbilityCost}";
+            AbilityDamage = 60;
+            //AbilityDuration = 0;
+            Details = $"{AbilityName}: Stab opponent in back.";
         }
     }
     public class Invisible : Abilities
@@ -97,7 +118,9 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 7;
-            Details = $"{AbilityName}: Turns character invisible increasing movement speed and damage while in stealth.\nMana Cost: {AbilityCost}";
+           // AbilityDamage = 0;
+            AbilityDuration = 5.0f;
+            Details = $"{AbilityName}: Turns character invisible increasing movement speed and damage while in stealth.";
         }
     }
 }

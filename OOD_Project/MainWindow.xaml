@@ -15,7 +15,7 @@
         <Button x:Name="btnNextPage" Content="Next" HorizontalAlignment="Left" Margin="520,436,0,0" VerticalAlignment="Top" Width="75" Click="btnNextPage_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="25,229,0,0" TextWrapping="Wrap" Text="Skills :" VerticalAlignment="Top" RenderTransformOrigin="-0.601,0.556"/>
         <TextBlock HorizontalAlignment="Left" Margin="374,92,0,0" TextWrapping="Wrap" Text="Background :" VerticalAlignment="Top"/>
-        <ListBox x:Name="lbxSkillList" HorizontalAlignment="Left" Height="149" Margin="24,266,0,0" VerticalAlignment="Top" Width="321" SelectionChanged="lbxSkillList_SelectionChanged"/>
+        <ListBox x:Name="lbxSkillList" HorizontalAlignment="Left" Height="149" Margin="24,266,0,0" VerticalAlignment="Top" Width="163" SelectionChanged="lbxSkillList_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="374,247,0,0" TextWrapping="Wrap" Text="Skill Description :" VerticalAlignment="Top" RenderTransformOrigin="0.81,0.407"/>
         <TextBlock x:Name="tblkSkillDescription" HorizontalAlignment="Left" Margin="374,268,0,0" TextWrapping="Wrap" Text="Skill Description" VerticalAlignment="Top" Height="147" Width="213"/>
         <TextBlock HorizontalAlignment="Left" Margin="187,133,0,0" TextWrapping="Wrap" Text="Int :" VerticalAlignment="Top"/>
@@ -27,7 +27,13 @@
         <TextBlock x:Name="tblkDex" HorizontalAlignment="Left" Margin="242,154,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
         <TextBlock x:Name="tblkInt" HorizontalAlignment="Left" Margin="242,133,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
         <TextBlock x:Name="tblkStr" HorizontalAlignment="Left" Margin="242,113,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkMana" HorizontalAlignment="Left" Margin="242,196,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tblkMana" HorizontalAlignment="Left" Margin="242,194,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="221,279,0,0" TextWrapping="Wrap" Text="Damage :" VerticalAlignment="Top" Width="63"/>
+        <TextBlock HorizontalAlignment="Left" Margin="221,300,0,0" TextWrapping="Wrap" Text="Duration :" VerticalAlignment="Top" Width="63"/>
+        <TextBlock HorizontalAlignment="Left" Margin="221,321,0,0" TextWrapping="Wrap" Text="Mana Cost :" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tblkDamage" HorizontalAlignment="Left" Margin="301,279,0,0" TextWrapping="Wrap" Text="99999" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tblkDuration" HorizontalAlignment="Left" Margin="301,300,0,0" TextWrapping="Wrap" Text="999999" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tblkManaCost" HorizontalAlignment="Left" Margin="301,321,0,0" TextWrapping="Wrap" Text="9999999" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

@@ -21,7 +21,21 @@ namespace OOD_Project
         public int Inteligence { get; set; }
         public int Dexterity { get; set; }
 
+        // Testing 
+        public float HPScaling { get; set; }
+        public float MPScaling { get; set; }
 
+        protected int HealthScaling()
+        {
+            HPScaling *=Strength;
+            return Health = Convert.ToInt32(Health + HPScaling);
+        }
+
+        protected int ManaScaling()
+        {
+            MPScaling *= Inteligence;
+            return Mana = Convert.ToInt32(Mana + MPScaling);
+        }
 
         public SelectableCharacters( string characterName )
         {
@@ -37,19 +51,24 @@ namespace OOD_Project
         }
     }
 
+    // Characters class take in the Character type Name, the base stats and a description background
     // Can easily make more Characters
     public class Mage : SelectableCharacters
     {         
         public Mage(string characterName = "Mage")
         {
             CharacterName = characterName;
-            Health = 90;
+            HPScaling = 0.3f;
+            MPScaling = 0.5f;
+            Health = 90;            
             Mana = 150;
             Strength = 20;
             Inteligence = 50;
             Dexterity = 20;
             Details = "From far to the south the mage was raised to fight against the spawn.\n" +
                       "With Magic bestowed opon them from the gods they strike against their foe.";
+            HealthScaling();
+            ManaScaling();
         }
     }
 
@@ -59,12 +78,17 @@ namespace OOD_Project
         public Warrior(string characterName = "Warrior")
         {
             CharacterName = characterName;
+            HPScaling = 0.7f;
+            MPScaling = 0.2f;
             Health = 150;
             Mana = 60;
             Strength = 50;
             Inteligence = 20;
             Dexterity = 20;
             Details = "Fighting from ever reach of the plains the warriors fights againt all who stand before them.";
+
+            HealthScaling();
+            ManaScaling();
         }
     }
     public class Assasin : SelectableCharacters
@@ -72,6 +96,8 @@ namespace OOD_Project
         public Assasin(string characterName = "Assasin")
         {
             CharacterName = characterName;
+            HPScaling = 0.4f;
+            MPScaling = 0.3f;
             Health = 80;
             Mana = 95;
             Strength = 20;
@@ -79,6 +105,9 @@ namespace OOD_Project
             Dexterity = 50;
             Details = "To the North the Assasins live in the shadows\n" +
                       "Kill of be Killed. The life of an assasin is a ruthless one.";
+
+            HealthScaling();
+            ManaScaling();
         }
     }
 }
