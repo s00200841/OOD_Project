@@ -15,6 +15,7 @@ namespace OOD_Project
         public string Details { get; set; }
         public int AbilityCost { get; set; }
         public int AbilityDamage { get; set; }
+        public int BaseAbilityDamage { get; set; }
         public float AbilityDuration { get; set; }
         public int Inteligence { get; set; }
 
@@ -35,9 +36,10 @@ namespace OOD_Project
 
         // Can either expand on different stats ex. int , str for more flexability since
         // currrently this code takes the ability damage multiplied by stat divided by 3 
+        // TODO: Come back and investigate if i want unique scaling for each character type
         public int AbilityDamageScale(int damageScale)
         {
-            return AbilityDamage = Convert.ToInt32(AbilityDamage* damageScale / 3);
+            return AbilityDamage = Convert.ToInt32(BaseAbilityDamage* damageScale / 3);
         }
     }
 
@@ -48,7 +50,8 @@ namespace OOD_Project
         {           
             AbilityName = abilityname;
             AbilityCost = 5;
-            AbilityDamage = 25;
+            BaseAbilityDamage = 25;
+            AbilityDamage = BaseAbilityDamage;
             Details = $"{AbilityName}: Shoots a ball of fire at foes. Can inflict burning damage.";            
         }
     }
@@ -59,7 +62,8 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 7;
-            AbilityDamage = 15;
+            BaseAbilityDamage = 15;
+            AbilityDamage = BaseAbilityDamage;
             AbilityDuration = 3.5f;
             Details = $"{AbilityName}: Ice falls opon foes, Damaging and chilling all who get hit for a duration.";
         }
@@ -70,7 +74,8 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 5;
-            AbilityDamage = 36;
+            BaseAbilityDamage = 36;
+            AbilityDamage = BaseAbilityDamage;
             //AbilityDuration = 0;
             Details = $"{AbilityName}: Thunder strikes the ground with massive force. Stunning and damaging all foes in its range.";
         }
@@ -83,7 +88,8 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 6;
-            AbilityDamage = 35;
+            BaseAbilityDamage = 35;
+            AbilityDamage = BaseAbilityDamage;
             //AbilityDuration = 0;
             Details = $"{AbilityName}: Jump and slam the ground at opponents location.";
         }
@@ -94,7 +100,8 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 3;
-            AbilityDamage = 40;
+            BaseAbilityDamage = 40;
+            AbilityDamage = BaseAbilityDamage;
            // AbilityDuration = 0;
             Details = $"{AbilityName}: Swing weapon with huge force in an arc infront of you hitting all targets in its range.";
         }
@@ -107,7 +114,8 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 10;
-            AbilityDamage = 60;
+            BaseAbilityDamage = 60;
+            AbilityDamage = BaseAbilityDamage;
             //AbilityDuration = 0;
             Details = $"{AbilityName}: Stab opponent in back.";
         }
@@ -118,9 +126,24 @@ namespace OOD_Project
         {
             AbilityName = abilityname;
             AbilityCost = 7;
-           // AbilityDamage = 0;
+            // BaseAbilityDamage = 0;
+            // AbilityDamage = BaseAbilityDamage;
             AbilityDuration = 5.0f;
             Details = $"{AbilityName}: Turns character invisible increasing movement speed and damage while in stealth.";
+        }
+    }
+
+    // Range Skiils
+    public class TrueStrike : Abilities
+    {
+        public TrueStrike(string abilityname = "True Strike")
+        {
+            AbilityName = abilityname;
+            AbilityCost = 9;
+            BaseAbilityDamage = 45;
+            AbilityDamage = BaseAbilityDamage;
+            AbilityDuration = 0;
+            Details = $"{AbilityName}: Fires a charged Arrow, striking target with great precision.";
         }
     }
 }

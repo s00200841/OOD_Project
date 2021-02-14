@@ -58,8 +58,8 @@ namespace OOD_Project
         public Mage(string characterName = "Mage")
         {
             CharacterName = characterName;
-            HPScaling = 0.3f;
-            MPScaling = 0.5f;
+            HPScaling = 0.5f;
+            MPScaling = 0.7f;
             Health = 90;            
             Mana = 150;
             Strength = 20;
@@ -78,8 +78,8 @@ namespace OOD_Project
         public Warrior(string characterName = "Warrior")
         {
             CharacterName = characterName;
-            HPScaling = 0.7f;
-            MPScaling = 0.2f;
+            HPScaling = 0.9f;
+            MPScaling = 0.3f;
             Health = 150;
             Mana = 60;
             Strength = 50;
@@ -96,15 +96,34 @@ namespace OOD_Project
         public Assasin(string characterName = "Assasin")
         {
             CharacterName = characterName;
-            HPScaling = 0.4f;
-            MPScaling = 0.3f;
+            HPScaling = 0.6f;
+            MPScaling = 0.4f;
             Health = 80;
             Mana = 95;
             Strength = 20;
             Inteligence = 20;
             Dexterity = 50;
-            Details = "To the North the Assasins live in the shadows\n" +
+            Details = "To the North the Assasins live in the shadows.\n" +
                       "Kill of be Killed. The life of an assasin is a ruthless one.";
+
+            HealthScaling();
+            ManaScaling();
+        }
+    }
+    public class Ranger : SelectableCharacters
+    {
+        public Ranger(string characterName = "Ranger")
+        {
+            CharacterName = characterName;
+            HPScaling = 0.7f;
+            MPScaling = 0.6f;
+            Health = 85;
+            Mana = 85;
+            Strength = 30;
+            Inteligence = 30;
+            Dexterity = 45;
+            Details = "Rangers strike from range with bows\n" +
+                      "Killing all who try to attack their homeland.";
 
             HealthScaling();
             ManaScaling();

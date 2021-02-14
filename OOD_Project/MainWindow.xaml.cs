@@ -33,6 +33,8 @@ namespace OOD_Project
     /// So where i am is i may need base skills to go off because i update my stat and it gets updated every time so i end up with unrealistic stats
     /// UpdateSkillDamage made to test this!! 
     /// 1:30 now and kind of tired of coding for now
+    /// 14/02/2021 3:40, working on UpdateSkillDamage(), have added a base stat to ensure damage gets scaled once only, previously was getting multiplied over and over.
+    /// Added another character just to test out
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -55,6 +57,9 @@ namespace OOD_Project
         Abilities assasinSkill1 = new SneakAttack();
         Abilities assasinSkill2 = new Invisible();
 
+        SelectableCharacters ranger = new Ranger();
+        Abilities rangerSkill1 = new TrueStrike();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -74,10 +79,13 @@ namespace OOD_Project
             assasin.Abilities.Add(assasinSkill1);
             assasin.Abilities.Add(assasinSkill2);
 
+            ranger.Abilities.Add(rangerSkill1);
+
             // Adds Characters
             selectableCharacters.Add(mage);
             selectableCharacters.Add(warrior);
             selectableCharacters.Add(assasin);
+            selectableCharacters.Add(ranger);
 
             // Display Characters
             lbxCharacterChoice.ItemsSource = selectableCharacters;
@@ -111,6 +119,7 @@ namespace OOD_Project
             Abilities selectedAbility = lbxSkillList.SelectedItem as Abilities;
             if(selectedAbility != null)
             {
+                UpdateSkillDamage();
                 // Skill Stats
                 // Turning int to string here. TODO: Recheck if i need to change back
                 tblkSkillDescription.Text = selectedAbility.Details;
@@ -148,6 +157,8 @@ namespace OOD_Project
                     selectedAbility.AbilityDamageScale(warrior.Strength);
                 else if (selectedAbility == selectedAbility as SneakAttack || selectedAbility == selectedAbility as Invisible)
                     selectedAbility.AbilityDamageScale(assasin.Dexterity);
+                else if (selectedAbility == selectedAbility as TrueStrike)
+                    selectedAbility.AbilityDamageScale(ranger.Dexterity);
 
             }
         }
@@ -157,6 +168,7 @@ namespace OOD_Project
             string message = "Here i plan on adding a second window that will hold two main things for now\n" +
                             "Firstly the character name and secondly the chosen character class.";
             MessageBox.Show(message);
+            
 
         }
         // Gotfocus clears text so that a name can be added
