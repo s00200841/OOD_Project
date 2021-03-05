@@ -133,7 +133,7 @@ namespace OOD_Project
         }
     }
 
-    // Range Skiils
+    // Ranger Skiils ****
     public class TrueStrike : Abilities
     {
         public TrueStrike(string abilityname = "True Strike")
@@ -144,6 +144,47 @@ namespace OOD_Project
             AbilityDamage = BaseAbilityDamage;
             AbilityDuration = 0;
             Details = $"{AbilityName}: Fires a charged Arrow, striking target with great precision.";
+        }
+    }
+
+    public class RainOfArrows : Abilities
+    {
+        public RainOfArrows(string abilityname = "Rain of Arrows")
+        {
+            AbilityName = abilityname;
+            AbilityCost = 8;
+            BaseAbilityDamage = 11;
+            AbilityDamage = BaseAbilityDamage;
+            AbilityDuration = 4;
+            Details = $"{AbilityName}: Shoots a volley of arrows into the air and shower a designated area with arrows for a duration";
+        }
+    }
+
+    // BattleMage Skills ***
+
+    public class FlameSurge : Abilities
+    {
+        public FlameSurge(string abilityname = "Flame Surge")
+        {
+            AbilityName = abilityname;
+            AbilityCost = 9;
+            BaseAbilityDamage = 21;
+            AbilityDamage = BaseAbilityDamage;
+            AbilityDuration = 2;
+            Details = $"{AbilityName}: Flames surge forward at close range. igniting all in its path";
+        }
+    }
+
+    public class LightningEnchant : Abilities
+    {
+        public LightningEnchant(string abilityname = "Lightning Enchant")
+        {
+            AbilityName = abilityname;
+            AbilityCost = 12;
+            BaseAbilityDamage = 6;
+            AbilityDamage = BaseAbilityDamage;
+            AbilityDuration = 9;
+            Details = $"{AbilityName}: Enchances Weapon with the power of Lighting for a short duration";
         }
     }
 }

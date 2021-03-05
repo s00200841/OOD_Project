@@ -5,35 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OOD_Project"
         mc:Ignorable="d"
-        Title="MainWindow" Height="508.966" Width="654.138" Loaded="Window_Loaded">
-    <Grid>
-        <TextBox x:Name="tbxName" HorizontalAlignment="Left" Height="23" Margin="67,60,0,0" TextWrapping="Wrap" Text="Enter Name" VerticalAlignment="Top" Width="120" GotFocus="tbxName_GotFocus"/>
-        <TextBlock HorizontalAlignment="Left" Margin="24,61,0,0" TextWrapping="Wrap" Text="Name :" VerticalAlignment="Top"/>
-        <ListBox x:Name="lbxCharacterChoice" HorizontalAlignment="Left" Height="100" Margin="63,110,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="lbxCharacterChoice_SelectionChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="24,110,0,0" TextWrapping="Wrap" Text="Class :" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkCharacterInfoBackground" HorizontalAlignment="Left" Height="135" Margin="374,113,0,0" TextWrapping="Wrap" Text="Character Background" VerticalAlignment="Top" Width="221"/>
-        <Button x:Name="btnNextPage" Content="Next" HorizontalAlignment="Left" Margin="520,436,0,0" VerticalAlignment="Top" Width="75" Click="btnNextPage_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="25,229,0,0" TextWrapping="Wrap" Text="Skills :" VerticalAlignment="Top" RenderTransformOrigin="-0.601,0.556"/>
-        <TextBlock HorizontalAlignment="Left" Margin="374,92,0,0" TextWrapping="Wrap" Text="Background :" VerticalAlignment="Top"/>
-        <ListBox x:Name="lbxSkillList" HorizontalAlignment="Left" Height="149" Margin="24,266,0,0" VerticalAlignment="Top" Width="163" SelectionChanged="lbxSkillList_SelectionChanged"/>
-        <TextBlock HorizontalAlignment="Left" Margin="374,247,0,0" TextWrapping="Wrap" Text="Skill Description :" VerticalAlignment="Top" RenderTransformOrigin="0.81,0.407"/>
-        <TextBlock x:Name="tblkSkillDescription" HorizontalAlignment="Left" Margin="374,268,0,0" TextWrapping="Wrap" Text="Skill Description" VerticalAlignment="Top" Height="147" Width="213"/>
-        <TextBlock HorizontalAlignment="Left" Margin="187,133,0,0" TextWrapping="Wrap" Text="Int :" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="187,113,0,0" TextWrapping="Wrap" Text="Str :" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="187,154,0,0" TextWrapping="Wrap" Text="Dex :" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="187,194,0,0" TextWrapping="Wrap" Text="Mana :" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="187,175,0,0" TextWrapping="Wrap" Text="Health :" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkHealth" HorizontalAlignment="Left" Margin="242,175,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkDex" HorizontalAlignment="Left" Margin="242,154,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkInt" HorizontalAlignment="Left" Margin="242,133,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkStr" HorizontalAlignment="Left" Margin="242,113,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkMana" HorizontalAlignment="Left" Margin="242,194,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="221,279,0,0" TextWrapping="Wrap" Text="Damage :" VerticalAlignment="Top" Width="63"/>
-        <TextBlock HorizontalAlignment="Left" Margin="221,300,0,0" TextWrapping="Wrap" Text="Duration :" VerticalAlignment="Top" Width="63"/>
-        <TextBlock HorizontalAlignment="Left" Margin="221,321,0,0" TextWrapping="Wrap" Text="Mana Cost :" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkDamage" HorizontalAlignment="Left" Margin="301,279,0,0" TextWrapping="Wrap" Text="99999" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkDuration" HorizontalAlignment="Left" Margin="301,300,0,0" TextWrapping="Wrap" Text="999999" VerticalAlignment="Top"/>
-        <TextBlock x:Name="tblkManaCost" HorizontalAlignment="Left" Margin="301,321,0,0" TextWrapping="Wrap" Text="9999999" VerticalAlignment="Top"/>
+        Title="MainWindow" Height="531.966" Width="654.138" Loaded="Window_Loaded">
 
-    </Grid>
+    <TabControl TabStripPlacement="Top">
+        <TabItem Name="Character" Header="Character" Width="100">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox x:Name="tbxName" HorizontalAlignment="Left" Height="23" Margin="67,60,0,0" TextWrapping="Wrap" Text="Enter Name" VerticalAlignment="Top" Width="120" GotFocus="tbxName_GotFocus" Grid.ColumnSpan="2"/>
+                <TextBlock HorizontalAlignment="Left" Margin="24,61,0,0" TextWrapping="Wrap" Text="Name :" VerticalAlignment="Top"/>
+                <ListBox x:Name="lbxCharacterChoice" HorizontalAlignment="Left" Height="100" Margin="63,110,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="lbxCharacterChoice_SelectionChanged" Grid.ColumnSpan="2"/>
+                <TextBlock HorizontalAlignment="Left" Margin="24,110,0,0" TextWrapping="Wrap" Text="Class :" VerticalAlignment="Top"/>
+                <TextBlock x:Name="tblkCharacterInfoBackground" HorizontalAlignment="Left" Height="135" Margin="214,113,0,0" TextWrapping="Wrap" Text="Character Background" VerticalAlignment="Top" Width="221" Grid.Column="1"/>
+                <Button x:Name="btnNextPage" Content="Next" HorizontalAlignment="Left" Margin="360,436,0,0" VerticalAlignment="Top" Width="75" Click="btnNextPage_Click" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="25,229,0,0" TextWrapping="Wrap" Text="Skills :" VerticalAlignment="Top" RenderTransformOrigin="-0.601,0.556"/>
+                <TextBlock HorizontalAlignment="Left" Margin="214,92,0,0" TextWrapping="Wrap" Text="Background :" VerticalAlignment="Top" Grid.Column="1"/>
+                <ListBox x:Name="lbxSkillList" HorizontalAlignment="Left" Height="149" Margin="24,266,0,0" VerticalAlignment="Top" Width="163" SelectionChanged="lbxSkillList_SelectionChanged" Grid.ColumnSpan="2"/>
+                <TextBlock HorizontalAlignment="Left" Margin="214,247,0,0" TextWrapping="Wrap" Text="Skill Description :" VerticalAlignment="Top" RenderTransformOrigin="0.81,0.407" Grid.Column="1"/>
+                <TextBlock x:Name="tblkSkillDescription" HorizontalAlignment="Left" Margin="214,268,0,0" TextWrapping="Wrap" Text="Skill Description" VerticalAlignment="Top" Height="147" Width="213" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="27,133,0,0" TextWrapping="Wrap" Text="Int :" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="27,113,0,0" TextWrapping="Wrap" Text="Str :" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="27,154,0,0" TextWrapping="Wrap" Text="Dex :" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="27,194,0,0" TextWrapping="Wrap" Text="Mana :" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="27,175,0,0" TextWrapping="Wrap" Text="Health :" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="tblkHealth" HorizontalAlignment="Left" Margin="82,175,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="tblkDex" HorizontalAlignment="Left" Margin="82,154,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="tblkInt" HorizontalAlignment="Left" Margin="82,133,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="tblkStr" HorizontalAlignment="Left" Margin="82,113,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="tblkMana" HorizontalAlignment="Left" Margin="82,194,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="61,279,0,0" TextWrapping="Wrap" Text="Damage :" VerticalAlignment="Top" Width="63" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="61,300,0,0" TextWrapping="Wrap" Text="Duration :" VerticalAlignment="Top" Width="63" Grid.Column="1"/>
+                <TextBlock HorizontalAlignment="Left" Margin="61,321,0,0" TextWrapping="Wrap" Text="Mana Cost :" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="tblkDamage" HorizontalAlignment="Left" Margin="141,279,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="tblkDuration" HorizontalAlignment="Left" Margin="141,300,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+                <TextBlock x:Name="tblkManaCost" HorizontalAlignment="Left" Margin="141,321,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+
+            </Grid>
+        </TabItem>
+        <TabItem Name="Skills" Header="Skills" Width="100">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Skills:" VerticalAlignment="Top" Margin="21,25,0,0" Height="30" Width="140"/>
+                <ListBox x:Name="lbxSkillList1" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="140" Margin="21,60,0,0" SelectionChanged="lbxSkillList1_SelectionChanged"/>
+                <TextBlock x:Name="tblkSkillDescription1" HorizontalAlignment="Left" Height="222" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="201,60,0,0"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Description :" VerticalAlignment="Top" Margin="201,25,0,0" Height="30" Width="190"/>
+                
+                <TextBlock HorizontalAlignment="Left" Margin="408,102,0,0" TextWrapping="Wrap" Text="Duration:" VerticalAlignment="Top" Height="25" Width="120"/>
+                <TextBlock HorizontalAlignment="Left" Margin="408,143,0,0" TextWrapping="Wrap" Text="Mana Cost:" VerticalAlignment="Top" Height="25" Width="120"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Damage :" VerticalAlignment="Top" Margin="408,61,0,0" Height="25" Width="120"/>
+                <TextBlock x:Name="tblkDamage1" HorizontalAlignment="Left" Margin="528,61,0,0" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Height="25" Width="102"/>
+                <TextBlock x:Name="tblkDuration1" HorizontalAlignment="Left" Margin="528,102,0,0" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Height="25" Width="102"/>
+                <TextBlock x:Name="tblkManaCost1" HorizontalAlignment="Left" Margin="528,143,0,0" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Height="25" Width="102"/>
+                <TextBlock x:Name="tblkNo_Character_Selected" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="32,335,0,0" Height="36" Width="474" Text="No Character Selected. Please Return to Character tab and pick one!"/>
+
+
+            </Grid>
+
+        </TabItem>
+        <TabItem Name="Stats" Header="Stats" Width="100">
+
+        </TabItem>
+
+    </TabControl>
+
 </Window>

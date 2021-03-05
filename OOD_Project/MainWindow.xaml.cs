@@ -35,7 +35,25 @@ namespace OOD_Project
     /// 1:30 now and kind of tired of coding for now
     /// 14/02/2021 3:40, working on UpdateSkillDamage(), have added a base stat to ensure damage gets scaled once only, previously was getting multiplied over and over.
     /// Added another character just to test out
+    /// 05/03/2021 5:00 Wow been a while since added stuff( been theory crafting outside of code and thinking on how im to proceed)
+    /// Added new Tabs, focused on second tab (not sure as to how im wanting it visualy sofar(just have code from the first window i want on second showing correctly for now)).
+    /// Idea is to clean up a few parts in tab 1 and to spruce up tab two a bit, then i need to work out tab 3: my stat changing page (idea take say ex 40 point and distribute
+    /// on selected character,,, reset if i change char,,, to be not able to go over or under the 40 points i can use(can add then remove to re add, handle any other case!!!)
+    /// Mabey add a Fourth tab then to show new character with updated stats and name and allow saving then(if i try save without using all points (i should have a (Are you sure!)
+    /// option show first too.. 
+    /// 8:15 over 3 hours will do, feel happy with what ive done, and know what to do next and to ask
     /// </summary>
+
+    /// </TODO LIST:> Changes frequently
+    /// Adding mixed classes, would need to sort scaling
+    /// adding saving functionality
+    /// add altering of stats(keep a base stat to prevent going under)
+    /// all said and done focus on the last tab to show stats and save!!
+    /// 
+    ///</TO-ASK LIST:>
+    ///lbxSkillList1_SelectionChanged and UpdateSkillDamage1 are repeating code, ask about how to decide what list i am about to use first
+
+
     public partial class MainWindow : Window
     {
         ObservableCollection<SelectableCharacters> selectableCharacters = new ObservableCollection<SelectableCharacters>();
@@ -59,6 +77,11 @@ namespace OOD_Project
 
         SelectableCharacters ranger = new Ranger();
         Abilities rangerSkill1 = new TrueStrike();
+        Abilities rangerSkill2 = new RainOfArrows();
+
+        SelectableCharacters battleMage = new BattleMage();
+        Abilities battleMageSkill1 = new FlameSurge();
+        Abilities battleMageSkill2 = new LightningEnchant();
 
         public MainWindow()
         {
@@ -80,12 +103,17 @@ namespace OOD_Project
             assasin.Abilities.Add(assasinSkill2);
 
             ranger.Abilities.Add(rangerSkill1);
+            ranger.Abilities.Add(rangerSkill2);
+
+            battleMage.Abilities.Add(battleMageSkill1);
+            battleMage.Abilities.Add(battleMageSkill2);
 
             // Adds Characters
             selectableCharacters.Add(mage);
             selectableCharacters.Add(warrior);
             selectableCharacters.Add(assasin);
             selectableCharacters.Add(ranger);
+            selectableCharacters.Add(battleMage);
 
             // Display Characters
             lbxCharacterChoice.ItemsSource = selectableCharacters;
@@ -97,9 +125,11 @@ namespace OOD_Project
             SelectableCharacters selectedCharacter = lbxCharacterChoice.SelectedItem as SelectableCharacters;
 
             if (selectedCharacter != null)
-            {           
+            {
+                tblkNo_Character_Selected.Text = $"The {selectedCharacter} class is currently selected.";
                 // Displays abilities for the selected class
                 lbxSkillList.ItemsSource = selectedCharacter.Abilities;
+                lbxSkillList1.ItemsSource = selectedCharacter.Abilities;
                 // Displays the background story for selected character
                 tblkCharacterInfoBackground.Text = string.Format($"{selectedCharacter.Details}");
 
@@ -113,7 +143,8 @@ namespace OOD_Project
         }
         // Skill list: Once character choice gets seleted this will be populated for use
         // Selecting a skill will give a description of the ability and mana cost
-        // TODO: Recheck later if i want more functionality here!!!
+        // TODO: Recheck later if i want more functionality here!!! Had To remake code 
+        // Have Added a new tab and should be updating correctly now
         private void lbxSkillList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Abilities selectedAbility = lbxSkillList.SelectedItem as Abilities;
@@ -123,24 +154,65 @@ namespace OOD_Project
                 // Skill Stats
                 // Turning int to string here. TODO: Recheck if i need to change back
                 tblkSkillDescription.Text = selectedAbility.Details;
+                tblkSkillDescription1.Text = selectedAbility.Details;
                 if (selectedAbility.AbilityDamage == 0)
                 {
                     tblkDamage.Text = "";
+                    tblkDamage1.Text = "";
                 }
                 else
                 {
                     tblkDamage.Text = selectedAbility.AbilityDamage.ToString();
+                    tblkDamage1.Text = selectedAbility.AbilityDamage.ToString();
                 }
                 if(selectedAbility.AbilityDuration == 0)
                 {
                     tblkDuration.Text = "";
+                    tblkDuration1.Text = "";
                 }
                 else
                 {
                     tblkDuration.Text = selectedAbility.AbilityDuration.ToString();
+                    tblkDuration1.Text = selectedAbility.AbilityDuration.ToString();
                 }
                 
                 tblkManaCost.Text = selectedAbility.AbilityCost.ToString();
+                tblkManaCost1.Text = selectedAbility.AbilityCost.ToString();
+            }
+        }
+        private void lbxSkillList1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        { // Copy of lbkSkillList to sort through the new list in skill tab also
+            Abilities selectedAbility = lbxSkillList1.SelectedItem as Abilities;
+            if (selectedAbility != null)
+            {
+                UpdateSkillDamage1();
+                // Skill Stats
+                // Turning int to string here. TODO: Recheck if i need to change back
+                tblkSkillDescription.Text = selectedAbility.Details;
+                tblkSkillDescription1.Text = selectedAbility.Details;
+                if (selectedAbility.AbilityDamage == 0)
+                {
+                    tblkDamage.Text = "";
+                    tblkDamage1.Text = "";
+                }
+                else
+                {
+                    tblkDamage.Text = selectedAbility.AbilityDamage.ToString();
+                    tblkDamage1.Text = selectedAbility.AbilityDamage.ToString();
+                }
+                if (selectedAbility.AbilityDuration == 0)
+                {
+                    tblkDuration.Text = "";
+                    tblkDuration1.Text = "";
+                }
+                else
+                {
+                    tblkDuration.Text = selectedAbility.AbilityDuration.ToString();
+                    tblkDuration1.Text = selectedAbility.AbilityDuration.ToString();
+                }
+
+                tblkManaCost.Text = selectedAbility.AbilityCost.ToString();
+                tblkManaCost1.Text = selectedAbility.AbilityCost.ToString();
             }
         }
 
@@ -157,9 +229,36 @@ namespace OOD_Project
                     selectedAbility.AbilityDamageScale(warrior.Strength);
                 else if (selectedAbility == selectedAbility as SneakAttack || selectedAbility == selectedAbility as Invisible)
                     selectedAbility.AbilityDamageScale(assasin.Dexterity);
-                else if (selectedAbility == selectedAbility as TrueStrike)
+                else if (selectedAbility == selectedAbility as TrueStrike || selectedAbility == selectedAbility as RainOfArrows)
                     selectedAbility.AbilityDamageScale(ranger.Dexterity);
+                else if (selectedAbility == selectedAbility as FlameSurge || selectedAbility == selectedAbility as LightningEnchant)
+                    selectedAbility.AbilityDamageScale(battleMage.Inteligence);
 
+                // For a mix character like BattleMage they will scale off the other characters( ex mages fireball == mage scaling of 50
+                // Swipe == warrior scaling
+                // TODO: Come back here to rectify or to remove extra charatcters
+            }
+        }
+        private void UpdateSkillDamage1()
+        {
+            Abilities selectedAbility = lbxSkillList1.SelectedItem as Abilities;
+            if (selectedAbility != null)
+            {
+                // TODO: Check
+                if (selectedAbility == selectedAbility as FireBall || selectedAbility == selectedAbility as IceFall || selectedAbility == selectedAbility as Thunder)
+                    selectedAbility.AbilityDamageScale(mage.Inteligence);
+                else if (selectedAbility == selectedAbility as SlamAttack || selectedAbility == selectedAbility as Swipe)
+                    selectedAbility.AbilityDamageScale(warrior.Strength);
+                else if (selectedAbility == selectedAbility as SneakAttack || selectedAbility == selectedAbility as Invisible)
+                    selectedAbility.AbilityDamageScale(assasin.Dexterity);
+                else if (selectedAbility == selectedAbility as TrueStrike || selectedAbility == selectedAbility as RainOfArrows)
+                    selectedAbility.AbilityDamageScale(ranger.Dexterity);
+                else if (selectedAbility == selectedAbility as FlameSurge || selectedAbility == selectedAbility as LightningEnchant)
+                    selectedAbility.AbilityDamageScale(battleMage.Inteligence);
+
+                // For a mix character like BattleMage they will scale off the other characters( ex mages fireball == mage scaling of 50
+                // Swipe == warrior scaling
+                // TODO: Come back here to rectify or to remove extra charatcters
             }
         }
         //TODO: Fill Later, Temp Code added for now , Can also use this for now as a button tester to update stuff!!!
@@ -176,5 +275,6 @@ namespace OOD_Project
         {
             tbxName.Clear();
         }
+
     }
 }

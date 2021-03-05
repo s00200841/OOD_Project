@@ -62,9 +62,9 @@ namespace OOD_Project
             MPScaling = 0.7f;
             Health = 90;            
             Mana = 150;
-            Strength = 20;
+            Strength = 25;
             Inteligence = 50;
-            Dexterity = 20;
+            Dexterity = 25;
             Details = "From far to the south the mage was raised to fight against the spawn.\n" +
                       "With Magic bestowed opon them from the gods they strike against their foe.";
             HealthScaling();
@@ -84,7 +84,7 @@ namespace OOD_Project
             Mana = 60;
             Strength = 50;
             Inteligence = 20;
-            Dexterity = 20;
+            Dexterity = 30;
             Details = "Fighting from ever reach of the plains the warriors fights againt all who stand before them.";
 
             HealthScaling();
@@ -100,7 +100,7 @@ namespace OOD_Project
             MPScaling = 0.4f;
             Health = 80;
             Mana = 95;
-            Strength = 20;
+            Strength = 30;
             Inteligence = 20;
             Dexterity = 50;
             Details = "To the North the Assasins live in the shadows.\n" +
@@ -120,10 +120,30 @@ namespace OOD_Project
             Health = 85;
             Mana = 85;
             Strength = 30;
-            Inteligence = 30;
+            Inteligence = 25;
             Dexterity = 45;
             Details = "Rangers strike from range with bows\n" +
                       "Killing all who try to attack their homeland.";
+
+            HealthScaling();
+            ManaScaling();
+        }
+    }
+
+    public class BattleMage : SelectableCharacters
+    {
+        public BattleMage(string characterName = "Battle Mage")
+        {
+            CharacterName = characterName;
+            HPScaling = 0.7f;
+            MPScaling = 0.6f;
+            Health = 110;
+            Mana = 90;
+            Strength = 40;
+            Inteligence = 40;
+            Dexterity = 20;
+            Details = "Battle Mages are a combination of close range fighting skills and magic arts\n" +
+                      "It take a lot to fight a Battle Mage, a lot more to kill.";
 
             HealthScaling();
             ManaScaling();
