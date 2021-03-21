@@ -41,6 +41,7 @@
                 <TextBlock x:Name="tblkDamage" HorizontalAlignment="Left" Margin="141,279,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
                 <TextBlock x:Name="tblkDuration" HorizontalAlignment="Left" Margin="141,300,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
                 <TextBlock x:Name="tblkManaCost" HorizontalAlignment="Left" Margin="141,321,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Button x:Name="btn_SubmitName" Content="Submit" Grid.Column="1" HorizontalAlignment="Left" Margin="49,60,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="btn_SubmitName_Click"/>
 
             </Grid>
         </TabItem>
@@ -50,7 +51,7 @@
                 <ListBox x:Name="lbxSkillList1" HorizontalAlignment="Left" Height="222" VerticalAlignment="Top" Width="140" Margin="21,60,0,0" SelectionChanged="lbxSkillList1_SelectionChanged"/>
                 <TextBlock x:Name="tblkSkillDescription1" HorizontalAlignment="Left" Height="222" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Margin="201,60,0,0"/>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Description :" VerticalAlignment="Top" Margin="201,25,0,0" Height="30" Width="190"/>
-                
+
                 <TextBlock HorizontalAlignment="Left" Margin="408,102,0,0" TextWrapping="Wrap" Text="Duration:" VerticalAlignment="Top" Height="25" Width="120"/>
                 <TextBlock HorizontalAlignment="Left" Margin="408,143,0,0" TextWrapping="Wrap" Text="Mana Cost:" VerticalAlignment="Top" Height="25" Width="120"/>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Damage :" VerticalAlignment="Top" Margin="408,61,0,0" Height="25" Width="120"/>
@@ -64,9 +65,30 @@
 
         </TabItem>
         <TabItem Name="Stats" Header="Stats" Width="100">
+            <Grid>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Stats" VerticalAlignment="Top" FontSize="20" Height="31" Width="53"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Character Name : " VerticalAlignment="Top" Margin="0,31,0,0" Height="25" Width="153" FontSize="20"/>
+                <TextBlock x:Name="tblk_CharacterName" HorizontalAlignment="Left" TextWrapping="Wrap" Text="No Name Selected on Tab 1" VerticalAlignment="Top" Margin="158,31,0,0" Width="462" Height="25" FontSize="20"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Class :" VerticalAlignment="Top" Margin="0,56,0,0" Height="25" Width="68" FontSize="20"/>
+                <TextBlock x:Name="tblk_ClassChosen" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Class Name" VerticalAlignment="Top" Margin="58,56,0,0" Height="30" Width="153" FontSize="20"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Strength :" VerticalAlignment="Top" Margin="0,148,0,0" FontSize="20"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Inteligence :" VerticalAlignment="Top" Margin="0,180,0,0" FontSize="20"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Dexterity :" VerticalAlignment="Top" Margin="0,212,0,0" FontSize="20"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Health :" VerticalAlignment="Top" Margin="0,86,0,0" FontSize="20"/>
+                <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Mana :" VerticalAlignment="Top" Margin="0,118,0,0" Height="25" Width="100" FontSize="20"/>
+                <TextBlock x:Name="tblk_t3_Strength" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="90,148,0,0" FontSize="20"/>
+                <TextBlock x:Name="tblk_t3_Inteligence" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="112,180,0,0" FontSize="20"/>
+                <TextBlock x:Name="tblk_t3_Dexterity" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="96,212,0,0" FontSize="20"/>
+                <TextBlock x:Name="tblk_t3_Health" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="75,86,0,0" FontSize="20"/>
+                <TextBlock x:Name="tblk_t3_Mana" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="70,118,0,0" Height="25" Width="100" FontSize="20"/>
+                <Button x:Name="btn_t3_SaveProfile" Content="Save Profile" HorizontalAlignment="Left" Margin="555,443,0,0" VerticalAlignment="Top" Width="75"/>
+
+
+            </Grid>
+
+
 
         </TabItem>
-
     </TabControl>
 
 </Window>

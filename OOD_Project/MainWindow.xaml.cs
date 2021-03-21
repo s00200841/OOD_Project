@@ -42,6 +42,8 @@ namespace OOD_Project
     /// Mabey add a Fourth tab then to show new character with updated stats and name and allow saving then(if i try save without using all points (i should have a (Are you sure!)
     /// option show first too.. 
     /// 8:15 over 3 hours will do, feel happy with what ive done, and know what to do next and to ask
+    /// 21/03/2021 8:00 Added some functionality to tab 3 to work from, added a save button with no function yet!!
+    /// 9:10 happy with progress for now
     /// </summary>
 
     /// </TODO LIST:> Changes frequently
@@ -139,6 +141,18 @@ namespace OOD_Project
                 tblkStr.Text = string.Format($"{selectedCharacter.Strength}");
                 tblkInt.Text = string.Format($"{selectedCharacter.Inteligence}");
                 tblkDex.Text = string.Format($"{selectedCharacter.Dexterity}");
+
+                // Tab 3 
+                tblk_t3_Health.Text = string.Format($"{selectedCharacter.Health}");
+                tblk_t3_Mana.Text = string.Format($"{selectedCharacter.Mana}");
+                tblk_t3_Strength.Text = string.Format($"{selectedCharacter.Strength}");
+                tblk_t3_Inteligence.Text = string.Format($"{selectedCharacter.Inteligence}");
+                tblk_t3_Dexterity.Text = string.Format($"{selectedCharacter.Dexterity}");
+
+                tblk_ClassChosen.Text = string.Format($"{selectedCharacter}");
+
+
+
             }
         }
         // Skill list: Once character choice gets seleted this will be populated for use
@@ -276,5 +290,14 @@ namespace OOD_Project
             tbxName.Clear();
         }
 
+        // Just a submit name option
+        private void btn_SubmitName_Click(object sender, RoutedEventArgs e)
+        {
+            // Tab 3
+            if(tbxName.Text == "")           
+                tblk_CharacterName.Text = "No Name Selected on Tab 1";           
+            else
+            tblk_CharacterName.Text = tbxName.Text;
+        }
     }
 }
