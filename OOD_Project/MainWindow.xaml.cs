@@ -47,7 +47,8 @@ namespace OOD_Project
     /// 21/03/2021 8:00 Added some functionality to tab 3 to work from, added a save button with no function yet!!
     /// 9:10 happy with progress for now
     /// 21/04/2021 5:00 Attemping images and mabey save to json 
-    /// 8:30 images are not working as intended , json is having issues finding path
+    /// 8:30 images are working as intended 
+    /// json is having issues finding path
     /// Created Database and it works fine!
     /// 9:20 Time! tired and im happy with progress
     /// </summary>
@@ -59,8 +60,7 @@ namespace OOD_Project
     /// all said and done focus on the last tab to show stats and save!!
     /// 
     ///</TO-ASK LIST:>
-    ///lbxSkillList1_SelectionChanged and UpdateSkillDamage1 are repeating code, ask about how to decide what list i am about to use first
-    ///Images not showing 
+    ///lbxSkillList1_SelectionChanged and UpdateSkillDamage1 are repeating code, ask about how to decide what list i am about to use first 
     ///about path when attempting to save to json
 
 
@@ -159,7 +159,7 @@ namespace OOD_Project
                 tblk_ClassChosen.Text = string.Format($"{selectedCharacter}");
 
                 // Image
-                lbxCharacterImage.ItemsSource = selectedCharacter.CharacterImage;
+                img_CharacterImage.Source = new BitmapImage(new Uri(selectedCharacter.CharacterImage, UriKind.Relative));
 
 
             }
@@ -289,7 +289,8 @@ namespace OOD_Project
         {
             string message = "Here i plan on adding a second window that will hold two main things for now\n" +
                             "Firstly the character name and secondly the chosen character class.";
-            MessageBox.Show(message);            
+            MessageBox.Show(message);
+            img_CharacterImage.Source = new BitmapImage(new Uri("/Images/Wizard.jpg", UriKind.Relative));
         }
         // Gotfocus clears text so that a name can be added
         private void tbxName_GotFocus(object sender, RoutedEventArgs e)
@@ -360,7 +361,6 @@ namespace OOD_Project
                 string message = "No Character/Name Chosen";
                 MessageBox.Show(message);
             }
-            //lbxCharacterImage.ItemsSource = "/Images/Wizard.jpg";
         }
     }
 }

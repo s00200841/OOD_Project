@@ -70,7 +70,7 @@ namespace OOD_Project
             Dexterity = 25;
             Details = "From far to the south the mage was raised to fight against the spawn.\n" +
                       "With Magic bestowed opon them from the gods they strike against their foe.";
-            CharacterImage = "/Images/Mage.jpg";
+            CharacterImage = "/Images/Wizard.jpg";
             HealthScaling();
             ManaScaling();
         }

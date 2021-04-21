@@ -10,11 +10,11 @@
         <DataTemplate x:Key ="listboxCharacterImage">
             <StackPanel>
                 <Image Source="{Binding CharacterImage}"/>
-              
+
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
-    
+
     <TabControl TabStripPlacement="Top">
         <TabItem Name="Character" Header="Character" Width="100">
             <Grid>
@@ -91,7 +91,7 @@
                 <TextBlock x:Name="tblk_t3_Health" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="75,86,0,0" FontSize="20"/>
                 <TextBlock x:Name="tblk_t3_Mana" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="70,118,0,0" Height="25" Width="100" FontSize="20"/>
                 <Button x:Name="btn_t3_SaveProfile" Content="Save Profile" HorizontalAlignment="Left" Margin="555,443,0,0" VerticalAlignment="Top" Width="75" Click="btn_t3_SaveProfile_Click"/>
-                <ListBox ItemTemplate="{StaticResource listboxCharacterImage}" x:Name="lbxCharacterImage" HorizontalAlignment="Left" Height="400" Margin="406,20,0,0" VerticalAlignment="Top" Width="214"/>
+                <Image x:Name="img_CharacterImage" HorizontalAlignment="Left" Height="286" Margin="362,75,0,0" VerticalAlignment="Top" Width="258"/>
             </Grid>
         </TabItem>
     </TabControl>
