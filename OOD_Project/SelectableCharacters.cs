@@ -21,6 +21,9 @@ namespace OOD_Project
         public int Inteligence { get; set; }
         public int Dexterity { get; set; }
 
+        // Image
+        public string CharacterImage { get; set; }
+
         // Testing 
         public float HPScaling { get; set; }
         public float MPScaling { get; set; }
@@ -67,6 +70,7 @@ namespace OOD_Project
             Dexterity = 25;
             Details = "From far to the south the mage was raised to fight against the spawn.\n" +
                       "With Magic bestowed opon them from the gods they strike against their foe.";
+            CharacterImage = "/Images/Mage.jpg";
             HealthScaling();
             ManaScaling();
         }
@@ -86,7 +90,7 @@ namespace OOD_Project
             Inteligence = 20;
             Dexterity = 30;
             Details = "Fighting from ever reach of the plains the warriors fights againt all who stand before them.";
-
+            CharacterImage = "/Images/Warrior.jpg";
             HealthScaling();
             ManaScaling();
         }
@@ -105,7 +109,7 @@ namespace OOD_Project
             Dexterity = 50;
             Details = "To the North the Assasins live in the shadows.\n" +
                       "Kill of be Killed. The life of an assasin is a ruthless one.";
-
+            CharacterImage = "/Images/Assasin.jpg";
             HealthScaling();
             ManaScaling();
         }
@@ -124,7 +128,7 @@ namespace OOD_Project
             Dexterity = 45;
             Details = "Rangers strike from range with bows\n" +
                       "Killing all who try to attack their homeland.";
-
+            CharacterImage = "/Images/Ranger.jpg";
             HealthScaling();
             ManaScaling();
         }
@@ -144,7 +148,7 @@ namespace OOD_Project
             Dexterity = 20;
             Details = "Battle Mages are a combination of close range fighting skills and magic arts\n" +
                       "It take a lot to fight a Battle Mage, a lot more to kill.";
-
+            CharacterImage = "/Images/BattleMage.jpg";
             HealthScaling();
             ManaScaling();
         }

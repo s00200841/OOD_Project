@@ -6,7 +6,15 @@
         xmlns:local="clr-namespace:OOD_Project"
         mc:Ignorable="d"
         Title="MainWindow" Height="531.966" Width="654.138" Loaded="Window_Loaded">
-
+    <Window.Resources>
+        <DataTemplate x:Key ="listboxCharacterImage">
+            <StackPanel>
+                <Image Source="{Binding CharacterImage}"/>
+              
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    
     <TabControl TabStripPlacement="Top">
         <TabItem Name="Character" Header="Character" Width="100">
             <Grid>
@@ -64,6 +72,7 @@
             </Grid>
 
         </TabItem>
+
         <TabItem Name="Stats" Header="Stats" Width="100">
             <Grid>
                 <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Stats" VerticalAlignment="Top" FontSize="20" Height="31" Width="53"/>
@@ -81,13 +90,9 @@
                 <TextBlock x:Name="tblk_t3_Dexterity" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="96,212,0,0" FontSize="20"/>
                 <TextBlock x:Name="tblk_t3_Health" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="75,86,0,0" FontSize="20"/>
                 <TextBlock x:Name="tblk_t3_Mana" HorizontalAlignment="Left" TextWrapping="Wrap" Text="000" VerticalAlignment="Top" Margin="70,118,0,0" Height="25" Width="100" FontSize="20"/>
-                <Button x:Name="btn_t3_SaveProfile" Content="Save Profile" HorizontalAlignment="Left" Margin="555,443,0,0" VerticalAlignment="Top" Width="75"/>
-
-
+                <Button x:Name="btn_t3_SaveProfile" Content="Save Profile" HorizontalAlignment="Left" Margin="555,443,0,0" VerticalAlignment="Top" Width="75" Click="btn_t3_SaveProfile_Click"/>
+                <ListBox ItemTemplate="{StaticResource listboxCharacterImage}" x:Name="lbxCharacterImage" HorizontalAlignment="Left" Height="400" Margin="406,20,0,0" VerticalAlignment="Top" Width="214"/>
             </Grid>
-
-
-
         </TabItem>
     </TabControl>
 

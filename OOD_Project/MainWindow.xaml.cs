@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace OOD_Project
 {
@@ -44,6 +46,10 @@ namespace OOD_Project
     /// 8:15 over 3 hours will do, feel happy with what ive done, and know what to do next and to ask
     /// 21/03/2021 8:00 Added some functionality to tab 3 to work from, added a save button with no function yet!!
     /// 9:10 happy with progress for now
+    /// 21/04/2021 5:00 Attemping images and mabey save to json 
+    /// 8:30 images are not working as intended , json is having issues finding path
+    /// Created Database and it works fine!
+    /// 9:20 Time! tired and im happy with progress
     /// </summary>
 
     /// </TODO LIST:> Changes frequently
@@ -54,14 +60,15 @@ namespace OOD_Project
     /// 
     ///</TO-ASK LIST:>
     ///lbxSkillList1_SelectionChanged and UpdateSkillDamage1 are repeating code, ask about how to decide what list i am about to use first
+    ///Images not showing 
+    ///about path when attempting to save to json
 
 
     public partial class MainWindow : Window
     {
         ObservableCollection<SelectableCharacters> selectableCharacters = new ObservableCollection<SelectableCharacters>();
-
-        // TODO: Later i plan on adding skills when i meet certian criteria( ex i add some more points to strength i gain a new skill)
-        // So i have to have these outside the methods for access
+        // DataBase 
+        CharacterSheetContainer db = new CharacterSheetContainer();
 
         // sets up classes and skills
         SelectableCharacters mage = new Mage();
@@ -151,6 +158,8 @@ namespace OOD_Project
 
                 tblk_ClassChosen.Text = string.Format($"{selectedCharacter}");
 
+                // Image
+                lbxCharacterImage.ItemsSource = selectedCharacter.CharacterImage;
 
 
             }
@@ -280,9 +289,7 @@ namespace OOD_Project
         {
             string message = "Here i plan on adding a second window that will hold two main things for now\n" +
                             "Firstly the character name and secondly the chosen character class.";
-            MessageBox.Show(message);
-            
-
+            MessageBox.Show(message);            
         }
         // Gotfocus clears text so that a name can be added
         private void tbxName_GotFocus(object sender, RoutedEventArgs e)
@@ -298,6 +305,62 @@ namespace OOD_Project
                 tblk_CharacterName.Text = "No Name Selected on Tab 1";           
             else
             tblk_CharacterName.Text = tbxName.Text;
+        }
+
+        private void btn_t3_SaveProfile_Click(object sender, RoutedEventArgs e)
+        {
+            SelectableCharacters selectedCharacter = lbxCharacterChoice.SelectedItem as SelectableCharacters;           
+            if (tbxName.Text != "" && selectedCharacter != null)
+            {
+                string CharacterData = $"Name: {tblk_CharacterName}\nClass: {tblk_ClassChosen}\n"+
+                    $"Health: {tblk_t3_Health}\nMana: {tblk_t3_Mana}\nStrength: {tblk_t3_Strength}\n" +
+                    $"Inteligence: {tblk_t3_Inteligence}\nDexterity: {tblk_t3_Dexterity}";
+                try
+                {
+                    string data = JsonConvert.SerializeObject(CharacterData, Formatting.Indented);
+                    using (StreamWriter sw = new StreamWriter("c:tempFolder/Charactersheet.json"))
+                    {
+                        sw.Write(data);
+                        sw.Close();
+                    }
+                    string message = "Character Information has been save to Json";
+                    MessageBox.Show(message);
+                }
+                catch
+                {
+                    string message = "Path Not Found Exception. File Not Saved to Json";
+                    MessageBox.Show(message);
+                }
+                try
+                {
+                    Character c = new Character()
+                    {
+                        Name = string.Format($"{tblk_CharacterName.Text}"),
+                        Class = string.Format($"{selectedCharacter}"),
+                        Health = selectedCharacter.Health,
+                        Mana = selectedCharacter.Mana,
+                        Strength = selectedCharacter.Strength,
+                        Inteligence = selectedCharacter.Inteligence,
+                        Dexterity = selectedCharacter.Dexterity
+                    };
+
+                    db.Characters.Add(c);
+                    db.SaveChanges();
+                    string message = "Character Information has been saved to Database";
+                    MessageBox.Show(message);
+                }
+                catch
+                {
+                    string message = "Database Not Found Exception. File Not Saved to Database";
+                    MessageBox.Show(message);
+                }
+            }
+            else
+            {
+                string message = "No Character/Name Chosen";
+                MessageBox.Show(message);
+            }
+            //lbxCharacterImage.ItemsSource = "/Images/Wizard.jpg";
         }
     }
 }

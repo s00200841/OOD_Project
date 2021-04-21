@@ -35,9 +35,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,6 +72,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Abilities.cs" />
+    <Compile Include="Character.cs">
+      <DependentUpon>CharacterSheet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterSheet.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CharacterSheet.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CharacterSheet.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CharacterSheet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CharacterSheet.edmx</DependentUpon>
+    </Compile>
     <Compile Include="SelectableCharacters.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -92,6 +122,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="CharacterSheet.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CharacterSheet.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="CharacterSheet.edmx.diagram">
+      <DependentUpon>CharacterSheet.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,6 +137,29 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Assasin.jpg" />
+    <Resource Include="Images\BattleMage.jpg" />
+    <Resource Include="Images\Ranger.jpg" />
+    <Resource Include="Images\Warrior.jpg" />
+    <Resource Include="Images\Wizard.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CharacterSheet.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CharacterSheet.Context.cs</LastGenOutput>
+      <DependentUpon>CharacterSheet.edmx</DependentUpon>
+    </Content>
+    <Content Include="CharacterSheet.edmx.sql" />
+    <Content Include="CharacterSheet.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CharacterSheet.cs</LastGenOutput>
+      <DependentUpon>CharacterSheet.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
