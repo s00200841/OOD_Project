@@ -57,6 +57,8 @@ namespace OOD_Project
     /// 10:30 have some Styles in(just black on white, looks better than most other color combinations) json path issue still there, made some adjustments to the save code
     /// just need to ask to make sure.
     /// 10:50 will get back on later to check Json file issue(if it is an issue) and then Project will be complete!
+    /// 11:05 Was missing \\ on my file path( simple mistake ) for Json file. Json now working as intended
+    /// Code is complete. can review and make changes before submission but i am happy with the overall project overall.
     /// </summary>
 
     public partial class MainWindow : Window
@@ -293,9 +295,6 @@ namespace OOD_Project
             SelectableCharacters selectedCharacter = lbxCharacterChoice.SelectedItem as SelectableCharacters;           
             if (tbxName.Text != "" && selectedCharacter != null)
             {
-                //string CharacterData = $"Name: {tblk_CharacterName}\nClass: {tblk_ClassChosen}\n"+
-                //    $"Health: {tblk_t3_Health}\nMana: {tblk_t3_Mana}\nStrength: {tblk_t3_Strength}\n" +
-                //    $"Inteligence: {tblk_t3_Inteligence}\nDexterity: {tblk_t3_Dexterity}"; 
                 Character c = new Character()
                 {
                     Name = string.Format($"{tblk_CharacterName.Text}"),
@@ -310,7 +309,7 @@ namespace OOD_Project
                 try
                 {
                     string data = JsonConvert.SerializeObject(c, Formatting.Indented);
-                    using (StreamWriter sw = new StreamWriter("c:tempFolder/Charactersheet.json"))
+                    using (StreamWriter sw = new StreamWriter("c:\\tempFolder\\Charactersheet.json"))
                     {
                         sw.Write(data);
                         sw.Close();
