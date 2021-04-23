@@ -23,6 +23,7 @@ namespace OOD_Project
     /// GitHub : https://github.com/s00200841/OOD_Project
     /// Name: Andrew Casey
     /// Student Number: S00200841
+    /// ********************************** Project Lifetime Notes (Thought's During Creation Cycle Of Project) *******************************
     /// 04/02/2021 3:00 started. going to take it slow and see what i can get done in a few hours,,
     /// Plans Mabey use Images... set up window and some simple interaction code... have an overall idea of what im doing.
     /// 6:35 set up a basic pick class/see info setup, took a while, couldnt get second listbox to work until i made my list an ObservableCollection
@@ -51,18 +52,12 @@ namespace OOD_Project
     /// json is having issues finding path
     /// Created Database and it works fine!
     /// 9:20 Time! tired and im happy with progress
+    /// 9:28 - 9:40. noticed the video for images/ watched and got right back on to try, got images working now as intended
+    /// 23/04/2021 10:00 Plans: add some styles to fill out quota. try fix Json or if not(Ask). not sure if its just path issues on my pc or if its wrong code
+    /// 10:30 have some Styles in(just black on white, looks better than most other color combinations) json path issue still there, made some adjustments to the save code
+    /// just need to ask to make sure.
+    /// 10:50 will get back on later to check Json file issue(if it is an issue) and then Project will be complete!
     /// </summary>
-
-    /// </TODO LIST:> Changes frequently
-    /// Adding mixed classes, would need to sort scaling
-    /// adding saving functionality
-    /// add altering of stats(keep a base stat to prevent going under)
-    /// all said and done focus on the last tab to show stats and save!!
-    /// 
-    ///</TO-ASK LIST:>
-    ///lbxSkillList1_SelectionChanged and UpdateSkillDamage1 are repeating code, ask about how to decide what list i am about to use first 
-    ///about path when attempting to save to json
-
 
     public partial class MainWindow : Window
     {
@@ -166,8 +161,6 @@ namespace OOD_Project
         }
         // Skill list: Once character choice gets seleted this will be populated for use
         // Selecting a skill will give a description of the ability and mana cost
-        // TODO: Recheck later if i want more functionality here!!! Had To remake code 
-        // Have Added a new tab and should be updating correctly now
         private void lbxSkillList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Abilities selectedAbility = lbxSkillList.SelectedItem as Abilities;
@@ -175,7 +168,7 @@ namespace OOD_Project
             {
                 UpdateSkillDamage();
                 // Skill Stats
-                // Turning int to string here. TODO: Recheck if i need to change back
+                // Turning int to string here.
                 tblkSkillDescription.Text = selectedAbility.Details;
                 tblkSkillDescription1.Text = selectedAbility.Details;
                 if (selectedAbility.AbilityDamage == 0)
@@ -210,7 +203,7 @@ namespace OOD_Project
             {
                 UpdateSkillDamage1();
                 // Skill Stats
-                // Turning int to string here. TODO: Recheck if i need to change back
+                // Turning int to string here.
                 tblkSkillDescription.Text = selectedAbility.Details;
                 tblkSkillDescription1.Text = selectedAbility.Details;
                 if (selectedAbility.AbilityDamage == 0)
@@ -239,7 +232,7 @@ namespace OOD_Project
             }
         }
 
-        // Update Skills Damage for testing purpose this exists .. TODO: Recheck value, if more skills added this need updating etc, TODO: try move to Abilities
+        // Updates skills damage to show the stats after the stat increase from selected characters stats
         private void UpdateSkillDamage()
         {
             Abilities selectedAbility = lbxSkillList.SelectedItem as Abilities;
@@ -256,18 +249,16 @@ namespace OOD_Project
                     selectedAbility.AbilityDamageScale(ranger.Dexterity);
                 else if (selectedAbility == selectedAbility as FlameSurge || selectedAbility == selectedAbility as LightningEnchant)
                     selectedAbility.AbilityDamageScale(battleMage.Inteligence);
-
-                // For a mix character like BattleMage they will scale off the other characters( ex mages fireball == mage scaling of 50
-                // Swipe == warrior scaling
-                // TODO: Come back here to rectify or to remove extra charatcters
             }
         }
+
+        // Same as above but shos the stats on a different Tab
+        // Updates skills damage to show the stats after the stat increase from selected characters stats
         private void UpdateSkillDamage1()
         {
             Abilities selectedAbility = lbxSkillList1.SelectedItem as Abilities;
             if (selectedAbility != null)
             {
-                // TODO: Check
                 if (selectedAbility == selectedAbility as FireBall || selectedAbility == selectedAbility as IceFall || selectedAbility == selectedAbility as Thunder)
                     selectedAbility.AbilityDamageScale(mage.Inteligence);
                 else if (selectedAbility == selectedAbility as SlamAttack || selectedAbility == selectedAbility as Swipe)
@@ -278,20 +269,9 @@ namespace OOD_Project
                     selectedAbility.AbilityDamageScale(ranger.Dexterity);
                 else if (selectedAbility == selectedAbility as FlameSurge || selectedAbility == selectedAbility as LightningEnchant)
                     selectedAbility.AbilityDamageScale(battleMage.Inteligence);
-
-                // For a mix character like BattleMage they will scale off the other characters( ex mages fireball == mage scaling of 50
-                // Swipe == warrior scaling
-                // TODO: Come back here to rectify or to remove extra charatcters
             }
         }
-        //TODO: Fill Later, Temp Code added for now , Can also use this for now as a button tester to update stuff!!!
-        private void btnNextPage_Click(object sender, RoutedEventArgs e)
-        {
-            string message = "Here i plan on adding a second window that will hold two main things for now\n" +
-                            "Firstly the character name and secondly the chosen character class.";
-            MessageBox.Show(message);
-            img_CharacterImage.Source = new BitmapImage(new Uri("/Images/Wizard.jpg", UriKind.Relative));
-        }
+
         // Gotfocus clears text so that a name can be added
         private void tbxName_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -301,7 +281,7 @@ namespace OOD_Project
         // Just a submit name option
         private void btn_SubmitName_Click(object sender, RoutedEventArgs e)
         {
-            // Tab 3
+            // Tab 3 : If text is empty then say no name selected, otherwise show chosen name
             if(tbxName.Text == "")           
                 tblk_CharacterName.Text = "No Name Selected on Tab 1";           
             else
@@ -313,12 +293,23 @@ namespace OOD_Project
             SelectableCharacters selectedCharacter = lbxCharacterChoice.SelectedItem as SelectableCharacters;           
             if (tbxName.Text != "" && selectedCharacter != null)
             {
-                string CharacterData = $"Name: {tblk_CharacterName}\nClass: {tblk_ClassChosen}\n"+
-                    $"Health: {tblk_t3_Health}\nMana: {tblk_t3_Mana}\nStrength: {tblk_t3_Strength}\n" +
-                    $"Inteligence: {tblk_t3_Inteligence}\nDexterity: {tblk_t3_Dexterity}";
+                //string CharacterData = $"Name: {tblk_CharacterName}\nClass: {tblk_ClassChosen}\n"+
+                //    $"Health: {tblk_t3_Health}\nMana: {tblk_t3_Mana}\nStrength: {tblk_t3_Strength}\n" +
+                //    $"Inteligence: {tblk_t3_Inteligence}\nDexterity: {tblk_t3_Dexterity}"; 
+                Character c = new Character()
+                {
+                    Name = string.Format($"{tblk_CharacterName.Text}"),
+                    Class = string.Format($"{selectedCharacter}"),
+                    Health = selectedCharacter.Health,
+                    Mana = selectedCharacter.Mana,
+                    Strength = selectedCharacter.Strength,
+                    Inteligence = selectedCharacter.Inteligence,
+                    Dexterity = selectedCharacter.Dexterity
+                };
+
                 try
                 {
-                    string data = JsonConvert.SerializeObject(CharacterData, Formatting.Indented);
+                    string data = JsonConvert.SerializeObject(c, Formatting.Indented);
                     using (StreamWriter sw = new StreamWriter("c:tempFolder/Charactersheet.json"))
                     {
                         sw.Write(data);
@@ -333,18 +324,7 @@ namespace OOD_Project
                     MessageBox.Show(message);
                 }
                 try
-                {
-                    Character c = new Character()
-                    {
-                        Name = string.Format($"{tblk_CharacterName.Text}"),
-                        Class = string.Format($"{selectedCharacter}"),
-                        Health = selectedCharacter.Health,
-                        Mana = selectedCharacter.Mana,
-                        Strength = selectedCharacter.Strength,
-                        Inteligence = selectedCharacter.Inteligence,
-                        Dexterity = selectedCharacter.Dexterity
-                    };
-
+                {                  
                     db.Characters.Add(c);
                     db.SaveChanges();
                     string message = "Character Information has been saved to Database";
